@@ -1,0 +1,23 @@
+{
+  "name": "Marinara",
+  "version": "2.5.0",
+  "kind": "service",
+  "description": "Runs Marinara Engine as its own program beside the engine and shows it in a tab. Uses the models you already connected. Unofficial: not affiliated with or supported by Pasta-Devs.",
+  "service": {
+    "command": ["bun", "start.js"],
+    "setup": ["bun", "setup.js"],
+    "setupOn": ["marinara.json", "setup.js"],
+    "ready": "/api/health",
+    "env": {
+      "MODELS_URL": "{models}",
+      "MODELS_KEY": "{models_key}",
+      "DATA_DIR": "{data}",
+      "HOST": "127.0.0.1",
+      "NODE_ENV": "production",
+      "AUTO_OPEN_BROWSER": "false",
+      "PROVIDER_LOCAL_URLS_ENABLED": "true",
+      "CSRF_TRUSTED_ORIGINS": "*"
+    },
+    "restartOn": ["start.js"]
+  }
+}
