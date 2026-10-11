@@ -68,7 +68,7 @@ async function download(url, file) {
     out.write(chunk);
     got += chunk.byteLength;
     // the size is not announced, so progress is what arrived so far
-    if (got - told >= 20 * 1024 * 1024) {
+    if (got - told >= 5 * 1024 * 1024) {
       await out.flush();
       told = got;
       say(`${Math.round(got / 1024 / 1024)} MB downloaded`);
